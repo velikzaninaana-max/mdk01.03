@@ -39,20 +39,12 @@ import com.example.myapplication1.ui.theme.inputBgColor
 import com.example.myapplication1.ui.theme.textColor
 
 @Composable
-fun ScreenCenter(label: String,
-                 text: String,
-                 modifier: Modifier = Modifier,
-                 text5: String,
-                 text1: String,
-                 text2: String,
-                 text3: String,
-                 text4: String) {
-
+fun ScreenCenter(modifier: Modifier = Modifier) {
     var emailText by remember { mutableStateOf("") }
     var isButtonEnabled = emailText.isNotEmpty()
 
     Column(
-        modifier = Modifier
+        modifier = modifier
             .background(Color.White)
             .fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -60,14 +52,14 @@ fun ScreenCenter(label: String,
     ) {
         Spacer(modifier = Modifier.height(40.dp))
         Text(
-            text = text1,
+            text = "Добро пожаловать!",
             color = textColor,
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold
         )
         Spacer(modifier = Modifier.height(20.dp))
         Text(
-            text = text2,
+            text = "Войдите, чтобы пользоваться функциями приложения",
             fontSize = 15.sp,
             modifier = Modifier
                 .padding(horizontal = 16.dp)
@@ -76,7 +68,7 @@ fun ScreenCenter(label: String,
         Spacer(modifier = Modifier.height(90.dp))
 
         Text(
-            text = text,
+            text = "Вход по E-mail",
             color = colorText,
             fontSize = 14.sp,
             modifier = Modifier
@@ -87,7 +79,7 @@ fun ScreenCenter(label: String,
         OutlinedTextField(
             value = emailText,
             onValueChange = { emailText = it },
-            label = { Text(label, fontSize = 15.sp, color = Color.Gray)},
+            label = { Text("example@mail.ru", fontSize = 15.sp, color = Color.Gray)},
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp),
@@ -115,7 +107,7 @@ fun ScreenCenter(label: String,
             )
         ) {
             Text(
-                text = text5,
+                text = "Далее",
                 fontSize = 17.sp,
                 color = color_Text,
                 modifier = Modifier
@@ -124,7 +116,7 @@ fun ScreenCenter(label: String,
         }
         Spacer(modifier = Modifier.height(250.dp))
         Text(
-            text = text3,
+            text = "Или войдите с помощью",
             fontSize = 15.sp,
             color = text_col
         )
@@ -142,7 +134,7 @@ fun ScreenCenter(label: String,
             border = BorderStroke(1.dp, colorBlue)
         ) {
             Text(
-                text = text4,
+                text = "Войти с Яндекс",
                 fontSize = 17.sp,
                 fontWeight = FontWeight.Medium,
                 modifier = Modifier
@@ -155,5 +147,5 @@ fun ScreenCenter(label: String,
 @Preview
 @Composable
 private fun ScreenPrev() {
-    ScreenCenter(text = "Вход по E-mail", label = "example@mail.ru", text5 = "Далее", text1 = "Добро пожаловать!", text2 = "Войдите, чтобы пользоваться функциями приложения", text3 = "Или войдите с помощью", text4 = "Войти с Яндекс")
+    ScreenCenter()
 }

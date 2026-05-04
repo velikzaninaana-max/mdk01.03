@@ -3,6 +3,7 @@ package com.example.myapplication1
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -24,29 +25,32 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.style.TextAlign
 
 @Composable
-fun Screen(text: String, text1: String, text2: String, modifier: Modifier = Modifier, painter: Painter, painter1: Painter) {
+fun Screen(text1: String, text2: String, modifier: Modifier = Modifier, painter: Painter, painter1: Painter) {
     Column(
-        modifier = Modifier
+        modifier = modifier
             .background(color = Color.White)
             .fillMaxSize()
             .padding(top = 49.dp)
             .padding(bottom = 80.dp)
     ){
+        Row(
+            modifier = modifier
+                .fillMaxWidth()
+        ) {
             Text(
-                text = text,
+                text = "Далее",
                 fontSize = 20.sp,
                 color = textPR6,
                 modifier = Modifier
-                    .padding(start = 30.dp)
+                    .padding(start = 16.dp)
             )
+            Spacer(modifier = Modifier.weight(1f))
             Image(
-            painter = painterResource(R.drawable.shape),
-            contentDescription = "Top image",
-            modifier = Modifier
-                .padding(
-                    start = 208.dp)
-        )
-
+                painter = painterResource(R.drawable.shape),
+                contentDescription = "Top image",
+                modifier = Modifier
+            )
+        }
         Spacer(modifier = Modifier.height(80.dp))
         Text(
             text = text1,
@@ -88,17 +92,17 @@ fun Screen(text: String, text1: String, text2: String, modifier: Modifier = Modi
 @Preview
 @Composable
 private fun ScreenPrev() {
-    Screen(text = "Далее", text1 = "Анализы", text2 = "Экспресс сбор и получение проб", painter = painterResource(R.drawable.illustration), painter1 = painterResource(R.drawable.group1))
+    Screen(text1 = "Анализы", text2 = "Экспресс сбор и получение проб", painter = painterResource(R.drawable.illustration), painter1 = painterResource(R.drawable.group1))
 }
 
 @Preview
 @Composable
 private fun ScreenPrev2() {
-    Screen(text = "Далее", text1 = "Уведомления", text2 = "Вы быстро узнаете о результатах", painter = painterResource(R.drawable.image3), painter1 = painterResource(R.drawable.group2))
+    Screen(text1 = "Уведомления", text2 = "Вы быстро узнаете о результатах", painter = painterResource(R.drawable.image3), painter1 = painterResource(R.drawable.group2))
 }
 
 @Preview
 @Composable
 private fun ScreenPrev3() {
-    Screen(text = "Далее", text1 = "Мониторинг", text2 = "Наши врачи всегда наблюдают \n" + "за вашими показателями здоровья", painter = painterResource(R.drawable.image2), painter1 = painterResource(R.drawable.group3))
+    Screen(text1 = "Мониторинг", text2 = "Наши врачи всегда наблюдают \n" + "за вашими показателями здоровья", painter = painterResource(R.drawable.image2), painter1 = painterResource(R.drawable.group3))
 }
