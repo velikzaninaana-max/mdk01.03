@@ -24,7 +24,9 @@ import com.example.myapplication1.ui.theme.text_col
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -75,22 +77,27 @@ fun ScreenCenter(modifier: Modifier = Modifier) {
                 .fillMaxWidth()
                 .padding(start = 16.dp)
         )
-        Spacer(modifier = Modifier.height(1.dp))
+        Spacer(modifier = Modifier.height(6.dp))
         OutlinedTextField(
             value = emailText,
-            onValueChange = { emailText = it },
-            label = { Text("example@mail.ru", fontSize = 15.sp, color = Color.Gray)},
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp),
-            shape = RoundedCornerShape(10.dp),
-            enabled = true,
-            colors = TextFieldDefaults.colors(
+            onValueChange = {emailText=it},
+            colors = OutlinedTextFieldDefaults.colors(
                 focusedContainerColor = inputBgColor,
                 unfocusedContainerColor = inputBgColor,
-                focusedIndicatorColor = borderColor,
-                unfocusedIndicatorColor = borderColor
-            )
+                unfocusedBorderColor = borderColor,
+                focusedBorderColor = borderColor
+            ),
+            placeholder = {
+                Text(
+                    text = "example@mail.ru",
+                    color = Color.Gray,
+                    fontSize = 15.sp
+                )
+            },
+            shape = RoundedCornerShape(10.dp),
+            modifier = Modifier.fillMaxWidth()
+                .size(width = 335.dp, height = 53.dp)
+                .padding(horizontal = 16.dp)
         )
 
         Spacer(modifier = Modifier.height(35.dp))
