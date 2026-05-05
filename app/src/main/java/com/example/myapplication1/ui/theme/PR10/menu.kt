@@ -8,24 +8,30 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.myapplication1.ui.theme.MyTheme
+import androidx.compose.foundation.Image
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+import kotlin.collections.mutableSetOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.vectorResource
+import com.example.myapplication1.R
+import com.example.myapplication1.ui.theme.MyCustomTheme
+import com.example.myapplication1.ui.theme.text_col
 
-data class  Item(
-    private val Index: Int,
-    private val Icon: Int,
-    private val title: String
-)
 @Composable
 fun Menu(modifier: Modifier = Modifier) {
-    //var itemList = listOf(
-        //Item(0,R.drawable.tests,"Анализы" ),
-        //Item(1,R.drawable.doc,"Результаты" ),
-        //Item(2,R.drawable.massage,"Поддержка" ),
-        //Item(3,R.drawable.user,"Профиль" ),
-    //)
+    var selItem by remember { mutableStateOf(-1) }
+    var itemList = listOf(
+        BarItem(0, R.drawable.analiz,"Анализы" ),
+        BarItem(1,R.drawable.result,"Результаты" ),
+        BarItem(2,R.drawable.podderzhka,"Поддержка" ),
+        BarItem(3,R.drawable.user,"Профиль" ),
+    )
     NavigationBar(
         modifier = modifier
-            .background(MyTheme.colors.white)
+            .background(MyCustomTheme.colors.white)
     ) {
         NavigationBarItem(
             selected = true,
@@ -42,14 +48,19 @@ fun Menu(modifier: Modifier = Modifier) {
                 )
             },
             colors = NavigationBarItemDefaults.colors(
-                //unselectedIconColor =
-                //unselectedTextColor =
-                //selectedIconColor =
-                //selectedTextColor =
-                //indicatorColor =
+                unselectedIconColor = text_col,
+                unselectedTextColor = text_col,
+                selectedIconColor = text_col,
+                selectedTextColor = text_col,
+                indicatorColor = text_col
             )
         )
     }
+}
+
+@Composable
+fun BarItem(x0: Int, x1: Int, x2: String) {
+    TODO("Not yet implemented")
 }
 
 @Preview

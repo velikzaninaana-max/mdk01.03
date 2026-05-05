@@ -41,7 +41,7 @@ import com.example.myapplication1.ui.theme.inputBgColor
 import com.example.myapplication1.ui.theme.textColor
 
 @Composable
-fun ScreenCenter(modifier: Modifier = Modifier) {
+fun ScreenCenter(modifier: Modifier = Modifier, navigateToScreen:() -> Unit) {
     var emailText by remember { mutableStateOf("") }
     var isButtonEnabled = emailText.isNotEmpty()
 
@@ -105,7 +105,8 @@ fun ScreenCenter(modifier: Modifier = Modifier) {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp),
-            onClick = { Log.d("MyLog", "Введенный email: $emailText") },
+            onClick = { Log.d("MyLog", "Введенный email: $emailText")
+                navigateToScreen()},
             shape = RoundedCornerShape(10.dp),
             enabled = isButtonEnabled,
             colors = ButtonDefaults.buttonColors(
@@ -154,5 +155,5 @@ fun ScreenCenter(modifier: Modifier = Modifier) {
 @Preview
 @Composable
 private fun ScreenPrev() {
-    ScreenCenter()
+    ScreenCenter(navigateToScreen = {})
 }

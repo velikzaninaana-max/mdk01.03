@@ -104,7 +104,7 @@ fun MyCustomTheme(content: @Composable () -> Unit) {
         content()
     }
 }
-object MyTheme {
+object MyCustomTheme {
     val colors: AppColors
         @Composable
         get() = LocalAppColors.current

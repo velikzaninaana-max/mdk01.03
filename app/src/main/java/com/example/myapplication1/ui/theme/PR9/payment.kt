@@ -98,7 +98,7 @@ fun Pay(modifier: Modifier = Modifier, back:() -> Unit) {
             modifier = Modifier
                 .fillMaxWidth()
                 .height(56.dp),
-            onClick = {  back()},
+            onClick = { back() },
             shape = RoundedCornerShape(10.dp),
             colors = ButtonDefaults.buttonColors(
                 containerColor = colorBlue,
