@@ -29,6 +29,9 @@ val text2PR6 = Color(0xFF00B712)
 val text3PR6 = Color(0xFF939396)
 val inactiveButton = Color(0xFFC9D4FB)
 
+//pr10
+val textPR10 = Color(0xFF1A6FEE)
+val notextPR10 = Color(0xFFB8C1CC)
 
 data class AppColors(
     val primary: Color,

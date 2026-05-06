@@ -1,5 +1,6 @@
 package com.example.myapplication1.ui.theme.Components
 
+import android.R.id.primary
 import androidx.compose.material3.Text
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
@@ -10,6 +11,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.myapplication1.ui.theme.AccentColor4
 import com.example.myapplication1.ui.theme.AccentColor5
+import com.example.myapplication1.ui.theme.MyCustomTheme
 
 @Composable
 fun PrimaryButton(text: String, onClick: () -> Unit, modifier: Modifier = Modifier) {
@@ -17,7 +19,7 @@ fun PrimaryButton(text: String, onClick: () -> Unit, modifier: Modifier = Modifi
         onClick = onClick,
         modifier = modifier,
         shape = RoundedCornerShape(10.dp),
-        colors = ButtonDefaults.buttonColors(containerColor = AccentColor4)
+        colors = ButtonDefaults.buttonColors(containerColor = MyCustomTheme.colors.primary)
     ) {
         Text(
             text = text,
@@ -30,5 +32,7 @@ fun PrimaryButton(text: String, onClick: () -> Unit, modifier: Modifier = Modifi
 @Preview
 @Composable
 private fun PrimaryButtonPreview() {
-    PrimaryButton(text = "Кнопка", onClick = {})
+    MyCustomTheme {
+        PrimaryButton(text = "Кнопка", onClick = {})
+    }
 }

@@ -13,50 +13,49 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.myapplication1.ui.theme.MyApplication1Theme
 import com.example.myapplication1.ui.theme.MyCustomTheme
+import com.example.myapplication1.ui.theme.PR10.Menu
 import com.example.myapplication1.ui.theme.PR9.Pay
 import com.example.myapplication1.ui.theme.PR9.Order
 import com.example.myapplication1.ui.theme.PR9.ScreenCenter
-
-
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            MyApplication1Theme {
-                val navController = rememberNavController()
-                NavHost(navController, startDestination = ScreenCenter) {
-                    composable<ScreenCenter>{
-                        ScreenCenter(
-                            navigateToScreen = {
-                                navController.navigate(route=Order)
-                                {
-                                    popUpTo<ScreenCenter>{inclusive = false}
-                                }
-                            }
-                        )
-                    }
-                    composable<Order>{
-                        Order(
-                            back = {navController.popBackStack()},
-                            navigateToOrder = {
-                                navController.navigate(route=Pay)
-                                {
-                                    popUpTo<Order>{inclusive = false}
-                                }
-                            }
-                        )
-                    }
-                    composable<Pay>
-                    {
-                        Pay(back = {navController.popBackStack()})
-                    }
+            MenuPr10()
+            //MyApplication1Theme {
+            //    val navController = rememberNavController()
+              //  NavHost(navController, startDestination = ScreenCenter) {
+                //    composable<ScreenCenter>{
+                  //      ScreenCenter(
+                    //        navigateToScreen = {
+                      //          navController.navigate(route=Order)
+                        //        {
+                          //          popUpTo<ScreenCenter>{inclusive = false}
+                            //    }
+                            //}
+                        //)
+                    //}
+                    //composable<Order>{
+                      //  Order(
+                        //    back = {navController.popBackStack()},
+                          //  navigateToOrder = {
+                            //    navController.navigate(route=Pay)
+                              //  {
+                                //    popUpTo<Order>{inclusive = false}
+                                //}
+                           // }
+                        //)
+                   // }
+                   // composable<Pay>
+                    //{
+                     //   Pay(back = {navController.popBackStack()})
+                    //}
                 }
             }
         }
-    }
-}
+
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
@@ -71,5 +70,12 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 fun GreetingPreview() {
     MyCustomTheme {
         Greeting("Android")
+    }
+}
+@Preview
+@Composable
+fun MenuPr10() {
+    MyCustomTheme {
+        Menu()
     }
 }
