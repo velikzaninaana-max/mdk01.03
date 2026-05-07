@@ -1,0 +1,7 @@
+package com.example.myapplication1.ui.theme.PR11
+
+data class Product(
+    val Title: String,
+    val Day: Int,
+    val Summa: Int
+)

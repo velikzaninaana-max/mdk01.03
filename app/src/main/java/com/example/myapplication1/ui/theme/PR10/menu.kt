@@ -8,24 +8,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.setValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.vectorResource
-import androidx.compose.ui.unit.dp
 import com.example.myapplication1.R
-import com.example.myapplication1.ui.theme.MyCustomTheme
 import com.example.myapplication1.ui.theme.MyCustomTheme.colors
-import com.example.myapplication1.ui.theme.colorBlue
 import com.example.myapplication1.ui.theme.notextPR10
 import com.example.myapplication1.ui.theme.textPR10
-import com.example.myapplication1.ui.theme.text_col
 
 data class TabBarItem(
     val index: Int,
@@ -33,13 +27,13 @@ data class TabBarItem(
     val title: String
 )
 @Composable
-fun Menu(modifier: Modifier = Modifier) {
-    var selItem by remember { mutableIntStateOf(value = -1) }
+fun Menu(modifier: Modifier = Modifier, onMenuClick: (String) -> Unit = {}) {
+    var selItem by remember { mutableIntStateOf(-1) }
     var item = listOf(
-        TabBarItem(0, R.drawable.analiz,"Анализы" ),
-        TabBarItem(1,R.drawable.result,"Результаты" ),
-        TabBarItem(2,R.drawable.podderzhka,"Поддержка" ),
-        TabBarItem(3,R.drawable.user,"Профиль" ),
+        TabBarItem(0, R.drawable.analizz,"Анализы" ),
+        TabBarItem(1,R.drawable.resultt,"Результаты" ),
+        TabBarItem(2,R.drawable.podderzhkaa,"Поддержка" ),
+        TabBarItem(3,R.drawable.userr,"Профиль" ),
     )
     NavigationBar(
         containerColor = colors.white
@@ -47,13 +41,19 @@ fun Menu(modifier: Modifier = Modifier) {
         for (itemNavBar in item) {
             NavigationBarItem(
                 selected = itemNavBar.index == selItem,
-                onClick = {selItem = itemNavBar.index},
+                onClick = {
+                    selItem = itemNavBar.index
+                    onMenuClick(itemNavBar.title)
+                },
                 icon = {
                     Image(
-                        modifier=modifier
-                            .size(24.dp,24.dp),
-                        painter = painterResource(id = itemNavBar.icon),
-                        contentDescription = null
+                        imageVector = ImageVector.vectorResource(itemNavBar.icon),
+                        contentDescription = null,
+                        colorFilter = ColorFilter.tint(
+                            if (itemNavBar.index == selItem)
+                                textPR10
+                            else notextPR10
+                    )
                     )
                 },
                 label = {
@@ -62,10 +62,8 @@ fun Menu(modifier: Modifier = Modifier) {
                     )
                 },
                 colors = NavigationBarItemDefaults.colors(
-                    unselectedIconColor = textPR10,
                     unselectedTextColor = notextPR10,
-                    selectedIconColor = textPR10,
-                    selectedTextColor = notextPR10,
+                    selectedTextColor = textPR10,
                     indicatorColor = Color.Transparent
                 )
             )

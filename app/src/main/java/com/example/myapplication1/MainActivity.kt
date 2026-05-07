@@ -23,39 +23,40 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            MenuPr10()
-            //MyApplication1Theme {
-            //    val navController = rememberNavController()
-              //  NavHost(navController, startDestination = ScreenCenter) {
-                //    composable<ScreenCenter>{
-                  //      ScreenCenter(
-                    //        navigateToScreen = {
-                      //          navController.navigate(route=Order)
-                        //        {
-                          //          popUpTo<ScreenCenter>{inclusive = false}
-                            //    }
-                            //}
-                        //)
-                    //}
-                    //composable<Order>{
-                      //  Order(
-                        //    back = {navController.popBackStack()},
-                          //  navigateToOrder = {
-                            //    navController.navigate(route=Pay)
-                              //  {
-                                //    popUpTo<Order>{inclusive = false}
-                                //}
-                           // }
-                        //)
-                   // }
-                   // composable<Pay>
-                    //{
-                     //   Pay(back = {navController.popBackStack()})
-                    //}
+            MyApplication1Theme {
+                val navController = rememberNavController()
+                NavHost(navController, startDestination = ScreenCenter) {
+                    composable<ScreenCenter> {
+                        ScreenCenter(
+                            navigateToScreen = {
+                                navController.navigate(route = Order)
+                                {
+                                    popUpTo<ScreenCenter> { inclusive = false }
+                                }
+                            }
+                        )
+                    }
+                    composable<Order> {
+                        Order(
+                            back = { navController.popBackStack() },
+                            navigateToOrder = {
+                                navController.navigate(route = Pay)
+                                {
+                                    popUpTo<Order> { inclusive = false }
+                                }
+                            }
+                        )
+                    }
+                    composable<Pay>
+                    {
+                        Pay(back = { navController.popBackStack() })
+                    }
+
                 }
             }
         }
-
+    }
+}
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
@@ -72,10 +73,5 @@ fun GreetingPreview() {
         Greeting("Android")
     }
 }
-@Preview
-@Composable
-fun MenuPr10() {
-    MyCustomTheme {
-        Menu()
-    }
-}
+
+

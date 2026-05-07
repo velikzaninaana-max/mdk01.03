@@ -32,6 +32,14 @@ val inactiveButton = Color(0xFFC9D4FB)
 //pr10
 val textPR10 = Color(0xFF1A6FEE)
 val notextPR10 = Color(0xFFB8C1CC)
+//pr11
+val ColorLazyRowButton = Color(0xFFF5F5F9)
+val ColorLazyRowButtonText = Color(0xFF7E7E9A)
+
+val Fon = Color(0xFFF4F4F4)
+
+val ColorCard = Color(0xFFF4F4F4)
+val ColorCardFon = Color(0xFFFFFFFF)
 
 data class AppColors(
     val primary: Color,
